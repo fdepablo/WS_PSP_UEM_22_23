@@ -30,6 +30,49 @@ public class MainEntidad {
 		listaPersonas.get(0).setDireccion(d1);
 		
 		System.out.println(listaPersonas);
+		
+		MainEntidad.llamarFuncion();
+		MainEntidad me = new MainEntidad();
+		me.llamarMetodo();
+		
+		p1.personaEspecial = p2;
+		
+		String cadena1 = "Felix1";
+		String cadena2 = "Felix1";
+		
+		if(cadena1 == cadena2) {
+			System.out.println("Es igual");
+		}else {
+			System.out.println("Es diferente");
+		}
+		
+		cadena1 = "Felix1";
+		cadena2 = new String("Felix1");
+		
+		if(cadena1 == cadena2) {
+			System.out.println("Es igual");
+		}else {
+			System.out.println("Es diferente");
+		}
+		
+		if(cadena1.equals(cadena2)) {
+			System.out.println("Es igual");
+		}else {
+			System.out.println("Es diferente");
+		}
+	}
+	
+	public static void llamarFuncion() {
+		System.out.println("Funcion llamada");
+	}
+	
+	public void llamarMetodo() {
+		System.out.println("Metodo llamado");
+		this.llamarMetodo2();
+	}
+	
+	public void llamarMetodo2() {
+		System.out.println("Metodo 2 llamado");
 	}
 
 }
