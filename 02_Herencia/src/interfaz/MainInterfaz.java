@@ -129,5 +129,6 @@ public class MainInterfaz {
 		//Bifunction es igual que OperacionGenerica
 		BiFunction<Double, Double, Double> operDivi =
 				(n1,n2) -> n2/n1;
+		
 	}
 }

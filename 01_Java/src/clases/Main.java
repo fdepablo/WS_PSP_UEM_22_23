@@ -45,6 +45,12 @@ public class Main {
 		System.out.println(cp);
 		
 		long numero2 = 1_100_000_000_000L;
+		
+		var variable1 = "";
+		variable1 = "Felix";
+		//variable1 = 5;
+		var varible2 = 5;
+		//variable2 = "";
 	}
 	
 	public static void cambiarEdad(Persona p1) {

@@ -11,6 +11,9 @@ import entidad.Tiburon;
 import entidad.Trucha;
 
 public class MainHerencia {
+	
+	//var atributo1 = new String();
+	
 	public static void main(String[] args) {
 		Animal a = null;
 		a = new Trucha();
@@ -77,6 +80,20 @@ public class MainHerencia {
 		};
 		
 		animal.comer(t);
+		
+		var animal4 = new Tiburon();
+		Tiburon t6 = animal4;
+		String s;
+		var prueba1 = prueba(5);
+
+	}
+	
+	public static Integer prueba(int numero) {
+		if(numero >0) {
+			return numero;
+		}else {
+			return null;
+		}
 		
 	}
 }
