@@ -20,4 +20,33 @@ public class Silla {
 		
 		System.out.println("****** Soy el obrero " + o.getNombre() + " y ya he descansado! A CURRAR!!");
 	}
+	
+	
+	public void descansarConMetodo(Obrero o) {
+		System.out.println("******* Soy el obrero " + o.getNombre() + " y me voy a sentar 10 segundos");
+		
+		try {
+			Thread.sleep(10000);//un obrero descansa 10 segundos
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			wait();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		synchronized (this) {
+			System.out.println("****** Soy el obrero " + o.getNombre() + " y ya he descansado! A CURRAR!!");
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
