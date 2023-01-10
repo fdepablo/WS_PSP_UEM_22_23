@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="fuego" class="modelo.entidad.Poder">
+		<property name="tipo" value="fuego"></property>
+		<property name="fuerza" value="10"></property>
+	</bean>
+	
+	<bean id="dr_strange" class="modelo.entidad.SuperHeroe">
+		<property name="nombre" value="Dr. Strange"></property>
+		<property name="poder" ref="fuego"></property>
+	</bean>
+	
+	<bean id="hieloProto" class="modelo.entidad.Poder" scope="prototype">
+		<property name="tipo" value="hielo"></property>
+		<property name="fuerza" value="15"></property>
+	</bean>
+	
+	<bean id="shProto" class="modelo.entidad.SuperHeroe" scope="prototype">
+		<property name="nombre" value=""></property>
+		<property name="poder" ref="hieloProto"></property>
+	</bean>
+	
+	<!-- podemos hacer inyecciones de dependencias tambien por inner bean -->
+	<bean id="shProto2" class="modelo.entidad.SuperHeroe" scope="prototype">
+		<property name="nombre" value=""></property>
+		<property name="poder">
+			<bean class="modelo.entidad.Poder">
+				<property name="tipo" value="electrico"></property>
+				<property name="fuerza" value="35"></property>
+			</bean>
+		</property>
+	</bean>
+</beans>

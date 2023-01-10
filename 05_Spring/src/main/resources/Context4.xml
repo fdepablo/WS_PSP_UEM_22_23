@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Spring tambien esta muy preparado para trabajar con colecciones 
+		Para tipos sencillos podemos usar la etiqueta value (int, string, etc)
+	-->
+	
+	<bean id="listaNombres" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="java.lang.String">
+				<value>Harry Potter</value>
+				<value>Steve Roger</value>
+				<value>Bud Spencer</value>
+				<value>Superman</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="persona1" class="ejemplo07.Persona">
+		<property name="nombre" value="Harry Callahan"></property>
+		<property name="edad" value="75"></property>
+	</bean>
+	
+	<bean id="persona2" class="ejemplo07.Persona">
+		<property name="nombre" value="Bud Spencer"></property>
+		<property name="edad" value="85"></property>
+	</bean>
+	
+	<!-- 
+		Para listas de objetos podemos iniciar una lista con inner beans o 
+		con objetos referenciados 
+	-->
+	<bean id="listaPersonas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="ejemplo07.Persona">
+				<bean class="ejemplo07.Persona">
+					<property name="nombre" value="Ramon"></property>
+					<property name="edad" value="70"></property>
+				</bean>
+				<ref bean="persona1"/>
+				<ref bean="persona2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="mapaPersonas" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="ejemplo07.Persona" >
+				<entry key="1" value-ref="persona1"></entry>
+				<entry key="2">
+					<bean class="ejemplo07.Persona">
+						<property name="nombre" value="Pato Donald"></property>
+						<property name="edad" value="65"></property>
+					</bean>
+				</entry>
+				<entry key="3" value-ref="persona2"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Un conunto no admiente valores repetidos -->
+	<bean id="conjuntoPersonas" class="java.util.HashSet">
+		<constructor-arg>
+			<set value-type="ejemplo07.Persona">
+				<ref bean="persona1"/>
+				<ref bean="persona2"/>
+				<bean class="ejemplo07.Persona">
+					<property name="nombre" value="Mikey Mouse"></property>
+					<property name="edad" value="100"></property>
+				</bean>
+				<ref bean="persona2"/>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="colecciones" class="ejemplo07.Colecciones">
+		<property name="listaPersonas">
+			<list>
+				<bean class="ejemplo07.Persona">
+					<property name="nombre" value="Ramon"></property>
+					<property name="edad" value="70"></property>
+				</bean>
+				<ref bean="persona1"/>
+			</list>
+		</property>
+		<property name="conjuntoStrings">
+			<set>
+				<value>Rojo</value>
+				<value>Verde</value>
+				<value>Azul</value>
+			</set>
+		</property>
+		<property name="mapaPersonas">
+			<map key-type="java.lang.Integer" value-type="ejemplo7.Persona" >
+				<entry key="1" value-ref="persona1"></entry>
+				<entry key="2">
+					<bean class="ejemplo07.Persona">
+						<property name="nombre" value="Pato Donald"></property>
+						<property name="edad" value="50"></property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

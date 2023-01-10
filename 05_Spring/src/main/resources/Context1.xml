@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Para dar de alta un contexto de spring por XML, usaremos un fichero 
+		de este tipo, y lo llamaremos desde la app. 
+		
+		Dentro de este fichero podremos dar de alta todos los beans que queramos dentro de 
+		nuestro contexto de Spring. 
+		
+		En este ejemplo solo vamos a tener un bean creado a partir de la clase 
+		Para dar de alta un bean en el contexto de spring usaremos la etiqueta "bean" 
+		y tendrá que tener al menos un identificador del bean "id", y la class que 
+		tiene que usar Spring para instanciar el objeto De manera basica, debemos 
+		de tener en la clase el constructor sin parametros 
+		
+		El ciclo de vida de los beans en Spring es por defecto de tipo "Singleton" que 
+		se traduce en que el objeto sera unico para toda la duracion del contexto de spring. 
+		
+		Hablaremos de otros ciclos de vida más adelante -->
+		
+	<bean id="persona1" class="modelo.entidad.Persona"/>
+
+	<bean id="goku" class="modelo.entidad.Persona" scope="singleton">
+		<property name="nombre" value="Goku"></property>
+		<property name="edad" value="23"></property>
+		<property name="peso" value="90.5"></property>
+	</bean>
+	
+	<!-- Si queremos crear objetos diferentes cada vez que pidamos un objeto a spring
+	debemos de usar el scope prototype -->
+	
+	<bean id="personaPrototype" class="modelo.entidad.Persona" scope="prototype">
+		<property name="nombre" value="nombre generico"></property>
+	</bean>
+	
+	<!-- Podemos crear cualquier objeto de nuestro classpath -->
+	
+	<bean id="listaPersonas" class="java.util.LinkedList"/>
+	
+	<bean id="personaConstructor" class="modelo.entidad.Persona">
+		<constructor-arg value="Ten sin han"></constructor-arg>
+		<constructor-arg value="43"></constructor-arg>
+		<constructor-arg value="78.9"></constructor-arg>
+	</bean>
+</beans>
